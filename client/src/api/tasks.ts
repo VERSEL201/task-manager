@@ -1,4 +1,4 @@
-import { axiosForBackend } from '@lark-apaas/client-toolkit/utils/getAxiosForBackend';
+import axios from 'axios';
 import type {
   Task,
   TaskListResponse,
@@ -7,6 +7,11 @@ import type {
   TaskPriority,
 } from '@shared/api.interface';
 
+const api = axios.create({
+  baseURL: '',
+  headers: { 'Content-Type': 'application/json' },
+});
+
 export const fetchTasks = async (
   priority?: TaskPriority | 'all',
 ): Promise<Task[]> => {
@@ -14,7 +19,7 @@ export const fetchTasks = async (
   if (priority && priority !== 'all') {
     params.priority = priority;
   }
-  const { data } = await axiosForBackend.get<TaskListResponse>('/api/tasks', {
+  const { data } = await api.get<TaskListResponse>('/api/tasks', {
     params,
   });
   return data.items;
@@ -23,7 +28,7 @@ export const fetchTasks = async (
 export const createTask = async (
   body: CreateTaskRequest,
 ): Promise<Task> => {
-  const { data } = await axiosForBackend.post<Task>('/api/tasks', body);
+  const { data } = await api.post<Task>('/api/tasks', body);
   return data;
 };
 
@@ -31,7 +36,7 @@ export const updateTask = async (
   id: string,
   body: UpdateTaskRequest,
 ): Promise<Task> => {
-  const { data } = await axiosForBackend.patch<Task>(
+  const { data } = await api.patch<Task>(
     `/api/tasks/${id}`,
     body,
   );
@@ -39,5 +44,5 @@ export const updateTask = async (
 };
 
 export const deleteTask = async (id: string): Promise<void> => {
-  await axiosForBackend.delete(`/api/tasks/${id}`);
+  await api.delete(`/api/tasks/${id}`);
 };
