@@ -1,0 +1,426 @@
+@import '@lark-apaas/client-toolkit/lib/index.css';
+@import "tw-animate-css";
+@import "./tailwind-theme.css";
+@import "./typography.css";
+
+@config "../../tailwind.config.ts";
+
+/* 陶土折屏 - 全局样式 */
+
+/* 页面背景：暖近白 + 顶部陶土橙径向渐晕 */
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201, 100, 66, 0.06), transparent),
+    var(--background);
+  min-height: 100vh;
+}
+
+/* 等宽数字 */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+/* 衬线展示体 - 标题用 */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* 正文无衬线 */
+.font-body {
+  font-family: var(--font-sans);
+}
+
+/* 图标线宽 */
+.lucide {
+  stroke-width: 1.7px;
+}
+
+/* 淡入动画 */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* 任务完成删除线动画 */
+@keyframes strike-in {
+  from {
+    text-decoration-color: transparent;
+  }
+  to {
+    text-decoration-color: currentColor;
+  }
+}
+
+.task-done .task-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  animation: strike-in 0.3s ease-out both;
+}
+
+/* 设备帧 - iPhone 15 Pro 拟真外框 */
+.device-frame {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  border-radius: 56px;
+  background: linear-gradient(160deg, #2a2a2c 0%, #1a1a1c 50%, #0e0e10 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 0 2px #000 inset,
+    0 28px 60px -12px rgba(0, 0, 0, 0.45),
+    0 8px 20px -8px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+/* 设备侧栏金属高光 */
+.device-frame::before,
+.device-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.device-frame::before {
+  left: 0;
+  border-radius: 56px 0 0 56px;
+}
+
+.device-frame::after {
+  right: 0;
+  border-radius: 0 56px 56px 0;
+}
+
+/* 屏幕面 */
+.device-screen {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 44px;
+  background: var(--background);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 动态岛 */
+.dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 124px;
+  height: 36px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 50;
+}
+
+/* 状态栏 */
+.status-bar {
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px 0 28px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 40;
+}
+
+.status-bar-time {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.status-bar-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 内容区 */
+.device-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.device-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Home Indicator */
+.home-indicator {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 40;
+}
+
+.home-indicator-bar {
+  width: 134px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--foreground);
+  opacity: 0.9;
+}
+
+/* 毛玻璃标签栏 */
+.glass-tabbar {
+  position: absolute;
+  bottom: 40px;
+  left: 12px;
+  right: 12px;
+  height: 83px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 0.5px solid var(--border);
+  border-radius: 0 0 44px 44px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 8px;
+  z-index: 30;
+}
+
+.glass-tabbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0 12px;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.glass-tabbar-item.active {
+  color: var(--primary);
+}
+
+/* 任务列表行样式 */
+.task-list-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+
+.task-list-row:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+
+/* pill 标签 */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.pill-high {
+  background: var(--status-high-bg);
+  color: var(--status-high);
+}
+
+.pill-medium {
+  background: var(--status-medium-bg);
+  color: var(--status-medium);
+}
+
+.pill-low {
+  background: var(--status-low-bg);
+  color: var(--status-low);
+}
+
+/* 筛选 Tab - 陶土折屏 filter-select 风格 */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  min-height: 44px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 500;
+}
+
+/* 主按钮 */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+}
+
+/* 次按钮 - 描边 */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:active {
+  background: var(--muted);
+}
+
+/* 图标按钮 - 圆形 */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  transition: all 0.15s ease;
+  padding: 4px;
+}
+
+.icon-btn:active {
+  background: var(--muted);
+}
+
+/* 完成态复选框 */
+.checkbox-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-circle.checked {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* 输入框 - 陶土折屏风格 */
+.input-clay {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input-clay:focus {
+  border-color: var(--primary);
+}
+
+.input-clay::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* 卡片 - 纯白 + 发丝边框 */
+.card-clay {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .task-done .task-title {
+    animation: none;
+  }
+}

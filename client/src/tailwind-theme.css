@@ -1,0 +1,223 @@
+:root {
+  --button-outline: rgba(0,0,0, .10);
+  --badge-outline: rgba(0,0,0, .05);
+
+  --opaque-button-border-intensity: -8;
+
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .08);
+
+  /* 陶土折屏 - 色彩系统 */
+  --background: hsl(60 18% 97%);
+  --foreground: hsl(48 8% 10%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(48 8% 10%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(48 8% 10%);
+  --primary: hsl(15 55% 53%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(60 10% 96%);
+  --secondary-foreground: hsl(48 8% 10%);
+  --muted: hsl(60 10% 94%);
+  --muted-foreground: hsl(45 4% 41%);
+  --accent: hsl(15 55% 53%);
+  --accent-foreground: hsl(0 0% 100%);
+  --info: hsl(200 70% 50%);
+  --info-foreground: hsl(200 100% 97%);
+  --destructive: hsl(2 70% 55%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --success: hsl(145 55% 42%);
+  --success-foreground: hsl(140 60% 97%);
+  --warning: hsl(42 90% 52%);
+  --warning-foreground: hsl(42 100% 20%);
+  --border: hsl(40 15% 89%);
+  --input: hsl(40 15% 89%);
+  --ring: hsl(15 55% 53%);
+
+  /* 优先级状态色 */
+  --status-high: hsl(15 55% 53%);
+  --status-high-bg: hsla(15, 55%, 53%, 0.14);
+  --status-medium: hsl(42 80% 50%);
+  --status-medium-bg: hsla(42, 80%, 50%, 0.14);
+  --status-low: hsl(145 50% 42%);
+  --status-low-bg: hsla(145, 50%, 42%, 0.14);
+  --status-done: hsl(45 4% 41%);
+  --status-done-bg: hsl(60 10% 94%);
+
+  --chart-1: hsl(15 55% 53%);
+  --chart-2: hsl(200 70% 50%);
+  --chart-3: hsl(42 90% 52%);
+  --chart-4: hsl(145 55% 42%);
+  --chart-5: hsl(270 40% 60%);
+
+  --sidebar: hsl(60 10% 96%);
+  --sidebar-foreground: hsl(48 8% 10%);
+  --sidebar-primary: hsl(15 55% 53%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(60 10% 92%);
+  --sidebar-accent-foreground: hsl(15 55% 45%);
+  --sidebar-border: hsl(40 15% 89%);
+  --sidebar-ring: hsl(15 55% 53%);
+
+  /* 陶土折屏 - 字体：三套字体严格分工 */
+  --font-display:
+    'Iowan Old Style', 'Charter', Georgia, 'Songti SC', 'Noto Serif SC', serif;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-serif:
+    'Iowan Old Style', 'Charter', Georgia, 'Songti SC', 'Noto Serif SC', serif;
+
+  --radius: 1.125rem; /* 18px card */
+  --shadow-xs: 0 0 0 0 transparent;
+  --shadow-sm: 0 0 0 0 transparent;
+  --shadow: 0 0 0 0 transparent;
+  --shadow-md: 0 0 0 0 transparent;
+  --shadow-lg: 0 0 0 0 transparent;
+  --shadow-xl: 0 0 0 0 transparent;
+  --shadow-2xl: 0 0 0 0 transparent;
+  --shadow-device:
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 0 0 2px #000 inset,
+    0 28px 60px -12px rgba(0,0,0,0.45),
+    0 8px 20px -8px rgba(0,0,0,0.35);
+
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-status-high: var(--status-high);
+  --color-status-high-bg: var(--status-high-bg);
+  --color-status-medium: var(--status-medium);
+  --color-status-medium-bg: var(--status-medium-bg);
+  --color-status-low: var(--status-low);
+  --color-status-low-bg: var(--status-low-bg);
+  --color-status-done: var(--status-done);
+  --color-status-done-bg: var(--status-done-bg);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem; /* 14px button */
+  --radius-lg: 1.125rem;  /* 18px card */
+  --radius-xl: 1.75rem;   /* 28px */
+  --radius-2xl: 2.75rem;  /* 44px screen */
+  --radius-3xl: 3.5rem;   /* 56px device */
+
+  --shadow-device: var(--shadow-device);
+}
+
+@layer utilities {
+  input[type="search"]::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--muted-foreground);
+    pointer-events: none;
+  }
+
+  .no-default-hover-elevate {}
+  .no-default-active-elevate {}
+
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  :where(.hover-elevate:not(.no-default-hover-elevate)),
+  :where(.active-elevate:not(.no-default-active-elevate)),
+  :where(.hover-elevate-2:not(.no-default-hover-elevate)),
+  :where(.active-elevate-2:not(.no-default-active-elevate)) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: 999;
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
