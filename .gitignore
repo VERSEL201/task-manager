@@ -71,3 +71,5 @@ pnpm-lock.yaml
 .spark/
 .spark_project
 .agent-memory/
+
+node_modules_old/
